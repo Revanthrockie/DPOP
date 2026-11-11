@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Decentralized Proof of Personhood — Seminar Explainer</title>
+<style>
+  @page { size: A4; margin: 22mm 20mm; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: Georgia, 'Times New Roman', serif;
+    color: #1f2430;
+    font-size: 11pt;
+    line-height: 1.62;
+    margin: 0;
+  }
+  h1, h2, h3, .label, .tag, th, .qbox .q { font-family: 'Helvetica Neue', Arial, sans-serif; }
+
+  .cover {
+    height: 253mm;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    page-break-after: always;
+  }
+  .cover .tag {
+    letter-spacing: 3px;
+    font-size: 10pt;
+    color: #6366f1;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .cover h1 {
+    font-size: 27pt;
+    margin: 0 0 14px;
+    color: #1e1b4b;
+    max-width: 460px;
+    line-height: 1.25;
+  }
+  .cover .sub {
+    font-size: 12.5pt;
+    color: #4b4f6b;
+    max-width: 420px;
+    margin-bottom: 34px;
+    font-style: italic;
+  }
+  .cover .meta {
+    font-size: 10.5pt;
+    color: #55597a;
+    line-height: 1.9;
+  }
+  .cover .meta b { color: #1e1b4b; }
+
+  h2.section {
+    font-size: 15.5pt;
+    color: #3730a3;
+    border-bottom: 2px solid #c7d2fe;
+    padding-bottom: 6px;
+    margin: 30px 0 12px;
+    page-break-after: avoid;
+  }
+  h2.section:first-of-type { margin-top: 0; }
+  h3 {
+    font-size: 12pt;
+    color: #312e81;
+    margin: 20px 0 6px;
+    page-break-after: avoid;
+  }
+  p { margin: 0 0 10px; text-align: justify; }
+  .lede {
+    font-size: 11.5pt;
+    color: #33364d;
+    font-style: italic;
+    border-left: 3px solid #a5b4fc;
+    padding-left: 12px;
+    margin-bottom: 14px;
+  }
+  .analogy {
+    background: #f5f6ff;
+    border: 1px solid #dfe1ff;
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin: 10px 0 14px;
+    font-size: 10.3pt;
+  }
+  .analogy .label { font-weight: 700; color: #4f46e5; font-size: 9pt; text-transform: uppercase; letter-spacing: 1px; display:block; margin-bottom:4px;}
+  code {
+    background: #eef0f8;
+    border-radius: 3px;
+    padding: 1px 5px;
+    font-family: 'Courier New', monospace;
+    font-size: 9.8pt;
+    color: #4338ca;
+  }
+  pre {
+    background: #1e1b2e;
+    color: #e2e4f5;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 9pt;
+    overflow-x: auto;
+    line-height: 1.5;
+    margin: 8px 0 14px;
+  }
+  table { border-collapse: collapse; width: 100%; margin: 8px 0 16px; font-size: 9.8pt; }
+  th, td { border: 1px solid #d8dae8; padding: 6px 9px; text-align: left; vertical-align: top; }
+  th { background: #ececff; color: #312e81; font-weight: 700; font-size: 9pt; text-transform: uppercase; letter-spacing: 0.5px; }
+  tr:nth-child(even) td { background: #f8f8fd; }
+
+  .qbox {
+    border: 1px solid #dcdfef;
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin: 0 0 12px;
+    page-break-inside: avoid;
+  }
+  .qbox .q { font-weight: 700; color: #1e1b4b; font-size: 10.5pt; margin-bottom: 4px; }
+  .qbox .a { font-size: 10.3pt; color: #2c2f42; }
+
+  .warnbox {
+    background: #fff7ed;
+    border: 1px solid #fdba74;
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin: 10px 0 14px;
+    font-size: 10.3pt;
+  }
+  .warnbox .label { font-weight: 700; color: #c2410c; font-size: 9pt; text-transform: uppercase; letter-spacing: 1px; display:block; margin-bottom:4px;}
+
+  .toc { font-size: 10.5pt; }
+  .toc ol { padding-left: 20px; }
+  .toc li { margin-bottom: 5px; }
+
+  ul, ol { margin: 4px 0 12px; padding-left: 20px; }
+  li { margin-bottom: 4px; }
+
+  .pagebreak { page-break-before: always; }
+  .footer-note { font-size: 8.5pt; color: #9497b5; text-align: center; margin-top: 24px; }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="tag">Seminar Explainer &amp; Viva Prep</div>
+  <h1>Decentralized Proof of Personhood</h1>
+  <div class="sub">A plain-language guide to what we built, how it works, and why — written so you can explain every piece with confidence.</div>
+  <div class="meta">
+    <b>VTU B.E. Project</b> · SKIT, 2025–26<br>
+    <b>Team 14</b> — Revanth, Shashank, Ajay, Chinmayee
+  </div>
+</div>
+
+<!-- TOC -->
+<h2 class="section">Contents</h2>
+<div class="toc">
+<ol>
+<li>The 60-second pitch (say this if you freeze)</li>
+<li>What problem are we actually solving?</li>
+<li>The big picture — three pieces, one flow</li>
+<li>Concepts you must understand before anything else makes sense</li>
+<li>Walking through the app, step by step</li>
+<li>A tour of every file, in plain English</li>
+<li>Why we built it this way (design decisions)</li>
+<li>What it can't do yet — and why saying so is a good thing</li>
+<li>Ideas for "future work" (professors always ask)</li>
+<li>Anticipated questions and how to answer them</li>
+<li>Glossary — every term in this document, one line each</li>
+</ol>
+</div>
+
+<!-- 1 -->
+<h2 class="section">1. The 60-second pitch</h2>
+<p class="lede">Memorize this paragraph. If a professor interrupts you two sentences into your seminar, this is what you fall back on.</p>
+<p>"Online, it's hard to prove you're a real, unique human without handing over your Aadhaar or your face to a company's server. Our project lets someone prove they're a unique human using only their own device — a face-tracking model runs entirely in their browser to check they performed a random physical action like blinking twice — and then a blockchain records that proof as a token in their crypto wallet that can never be sold, transferred, or duplicated. One human, one token, forever. No company holds their video, their photo, or their identity — the blockchain only ever sees a wallet address and a timestamp."</p>
+
+<!-- 2 -->
+<h2 class="section">2. What problem are we actually solving?</h2>
+<p>This category of problem is called <b>Sybil resistance</b> — stopping one person from pretending to be a thousand people. It matters everywhere: a single person creating 10,000 fake accounts to farm a token airdrop, bots inflating "likes," or one voter registering under fifty identities in an online poll. Traditional fixes ask you to submit a passport or an Aadhaar number to a central company — which now becomes a single database that can be hacked, sold, or subpoenaed.</p>
+<p><b>Proof of Personhood</b> is the general name for systems that answer "is this a unique real human?" without needing a government ID. Well-known examples your professors may have heard of are <b>Worldcoin / World ID</b> (scans your iris with a special hardware orb) and <b>Humanity Protocol</b>. Our project is a lightweight, no-special-hardware version of the same idea: instead of an iris scanner, we use the laptop or phone's own webcam and a free, open, on-device face-tracking model.</p>
+
+<!-- 3 -->
+<h2 class="section">3. The big picture — three pieces, one flow</h2>
+<p>The project has exactly three independently-run pieces of software. Professors like hearing that you can name each piece's <i>one job</i> — say it like this:</p>
+<div class="analogy">
+<span class="label">Analogy</span>
+Think of it like a nightclub with a bouncer. The <b>smart contract</b> is the wristband — once stamped, it can't be peeled off and given to someone else. The <b>backend</b> is the bouncer — the only one trusted to actually stamp wristbands, and he checks your ID before doing it. The <b>frontend</b> is the queue and the ID-check camera the bouncer uses — what the guest actually sees and interacts with.
+</div>
+<table>
+<tr><th>Piece</th><th>Technology</th><th>Its one job</th></tr>
+<tr><td><b>Smart contract</b></td><td>Solidity, deployed on Polygon Amoy (a blockchain test network)</td><td>Permanently record "this wallet is verified" and physically prevent the token from ever being transferred.</td></tr>
+<tr><td><b>Backend</b></td><td>Python, FastAPI</td><td>The only party allowed to mint tokens. Hands out challenges, checks you're not already verified, saves proof metadata, and signs the mint transaction.</td></tr>
+<tr><td><b>Frontend</b></td><td>React (JavaScript), running in the browser</td><td>Everything the user sees and clicks: connect wallet, show the camera, run face-tracking, display the final token.</td></tr>
+</table>
+<p>These three talk to each other over the network — the frontend calls the backend with plain HTTP requests, and the backend calls the smart contract using the blockchain's RPC protocol. No two of them run on the same computer even in production; only the frontend runs on the user's own device.</p>
+
+<!-- 4 -->
+<h2 class="section">4. Concepts you must understand before anything else makes sense</h2>
+<p class="lede">Read this section slowly once. Everything after this assumes you already know these words.</p>
+
+<h3>4.1 Blockchain, wallet, and "testnet"</h3>
+<p>A <b>blockchain</b> is a shared list of transactions that thousands of independent computers all agree on and keep a copy of — no single company owns or can secretly edit it. A <b>wallet</b> (like <b>MetaMask</b>, a browser extension) is just a pair of cryptographic keys: a <b>public address</b> (like a bank account number, safe to share — e.g. <code>0xAbC1...</code>) and a <b>private key</b> (like the PIN — must never be shared, since whoever has it can spend everything in that wallet). We use <b>Polygon Amoy</b>, which is a <b>testnet</b> — a real blockchain, running the exact same rules as the live "mainnet," except its currency (test MATIC, from a free faucet) is worthless play-money. This lets us build and demo for free without risking real funds.</p>
+
+<h3>4.2 Smart contracts and gas</h3>
+<p>A <b>smart contract</b> is a small program that, once deployed to the blockchain, runs exactly as written and can never be secretly changed or turned off by anyone — not even us. Every action that changes the blockchain's state (like minting a token) costs a small fee called <b>gas</b>, paid in the network's currency, which is why our contract has a wallet whose only job is paying that fee.</p>
+
+<h3>4.3 NFTs and the ERC-721 standard</h3>
+<p>An <b>NFT</b> (Non-Fungible Token) is a token where each individual unit is unique and traceable — unlike a rupee coin, where any ₹10 note is interchangeable with any other. <b>ERC-721</b> is the standard rulebook (published as an "Ethereum Request for Comment") that defines exactly how an NFT contract must behave, so wallets and marketplaces everywhere can understand it without custom code. We didn't write our token logic from scratch — we built on top of <b>OpenZeppelin</b>, a widely-audited, free library of standard contract building blocks, because writing token-transfer logic from zero is a common source of security bugs.</p>
+
+<h3>4.4 Soulbound tokens — EIP-5192</h3>
+<p>A normal NFT can be sold or given away. A <b>Soulbound Token (SBT)</b> is deliberately "glued" to the wallet it was minted to — it can never be transferred, ever. <b>EIP-5192</b> is the specific standard that defines how a contract should announce "I am soulbound" so other tools recognize it. This matters here because if a Proof-of-Personhood token could be sold, a "verified human" identity would just become a product for sale — completely defeating the point.</p>
+
+<h3>4.5 Liveness detection — why we need it at all</h3>
+<p>The whole system is worthless if someone can hold up a photo, or play a downloaded video, to the camera and get verified. <b>Liveness detection</b> is the general term for any check that the thing in front of the camera is a live, present, three-dimensional human reacting in real time — not a static image or a replayed video. Our method is <b>challenge-response</b>: the backend picks a random action ("blink twice") that the user must perform right now, unpredictably, which a static photo can never satisfy.</p>
+
+<h3>4.6 MediaPipe, blendshapes, and "on-device" AI</h3>
+<p><b>MediaPipe</b> is a free, open-source machine learning toolkit from Google. We use its <b>Face Landmarker</b> model, which — given one video frame — outputs two things we actually use: <b>blendshapes</b> (52 numbers between 0 and 1, each one measuring how strongly one specific facial muscle is engaged right now — e.g. <code>eyeBlinkLeft = 0.9</code> means the left eye is almost fully closed) and a <b>3-D head rotation matrix</b> (used to work out if the head is turned left/right or tilted up/down). The critical detail: this model runs <b>entirely inside the user's own browser</b>, compiled to WebAssembly and accelerated by the device's GPU. No video frame is ever uploaded anywhere — the browser only ever sends the backend the final result: "challenge passed."</p>
+<div class="analogy">
+<span class="label">Analogy</span>
+It's like a lie-detector built into your own laptop that only ever tells the exam board "pass" or "fail" — the board never gets the actual recording of the test.
+</div>
+
+<h3>4.7 IPFS and Pinata — why not just store data "on the blockchain"</h3>
+<p>Storing data directly on a blockchain is extremely expensive (you pay gas per byte). <b>IPFS</b> (InterPlanetary File System) is a separate, decentralized file-storage network: you upload a file, and get back a fingerprint (a <b>content hash</b>) that anyone can use to fetch that exact file from any computer hosting it. <b>Pinata</b> is a service that reliably keeps ("pins") your file available on IPFS. So our smart contract only stores a short string — the IPFS address — while the actual verification metadata (when you were verified, which challenge you passed) lives cheaply on IPFS.</p>
+
+<h3>4.8 FastAPI, Web3.py, and ethers.js — the "glue" libraries</h3>
+<p><b>FastAPI</b> is a Python framework for building web APIs quickly. <b>Web3.py</b> is the Python library our backend uses to talk to the blockchain — build a transaction, sign it with the minter's private key, and broadcast it. <b>ethers.js</b> is the equivalent library, but for the browser/JavaScript side — it's what lets the React frontend ask MetaMask to connect and later read data straight off the smart contract.</p>
+
+<h3>4.9 Environment variables and why <code>.env</code> files matter</h3>
+<p>Secrets like API keys and private keys must never be hard-coded into source files, because source code often ends up on GitHub for the world to see. Instead they're kept in a local <code>.env</code> file, loaded at runtime as <b>environment variables</b>, and that file is explicitly excluded from Git via <code>.gitignore</code>. If a professor asks "how do you protect your keys," this is the answer.</p>
+
+<!-- 5 -->
+<div class="pagebreak"></div>
+<h2 class="section">5. Walking through the app, step by step</h2>
+<p>This is the part to rehearse most, because it's literally what you'll demo live. Each step below names the exact code responsible, so if asked "show me where that happens," you can go straight to it.</p>
+
+<h3>Step 1 — Connect wallet</h3>
+<p>User clicks "Connect MetaMask" (<code>WalletConnect.jsx</code>). The app asks MetaMask for permission (<code>eth_requestAccounts</code>), then asks it to switch to the Polygon Amoy network — and if the user has never added that network before, it offers to add it automatically (<code>wallet_addEthereumChain</code>), so nobody has to manually type in RPC URLs.</p>
+
+<h3>Step 2 — Check "have you already got one?"</h3>
+<p>Before showing the camera, the app reads directly from the smart contract (<code>contract.isVerified(address)</code>) — this is a free, instant read, no gas cost — to see if this wallet was already minted a token. If yes, it jumps straight to an "Already Verified" screen instead of wasting the user's time.</p>
+
+<h3>Step 3 — Fetch a random challenge</h3>
+<p>The frontend calls <code>GET /challenge</code> on the backend, which picks one at random out of seven (blink, turn head, smile, nod, raise eyebrows, open mouth, look up/down) and returns its text, e.g. <i>"Blink your eyes twice slowly."</i></p>
+
+<h3>Step 4 — Run live face-tracking in the browser</h3>
+<p>The camera opens fullscreen. On every video frame, MediaPipe's Face Landmarker runs and returns blendshape scores and head-rotation angles. A small piece of logic specific to the current challenge (we call it a <b>detector</b>, effectively a tiny state machine) watches those numbers: for "blink," it counts how many times the eye-closed score crosses above a threshold and back down; for "turn," it checks the head's left/right rotation angle passed a threshold in each direction and returned to center in between (so a single continuous swipe doesn't wrongly count as two turns). This all happens dozens of times per second, purely on the user's own machine.</p>
+
+<h3>Step 5 — Challenge completed → submit</h3>
+<p>The moment the detector reports success, the camera stops immediately (privacy: nothing is recorded or kept), and the frontend sends <code>POST /verify</code> to the backend with only two fields: the wallet address and which challenge was completed. <b>The video itself is never sent anywhere.</b></p>
+
+<h3>Step 6 — Backend pins metadata and mints the token</h3>
+<p>The backend builds a small JSON document (wallet address, timestamp, which challenge was passed, verification method) and uploads it to IPFS via Pinata, getting back an <code>ipfs://...</code> address. It then builds a blockchain transaction calling the contract's <code>mint(walletAddress, ipfsAddress)</code> function, signs it with the minter wallet's private key, and broadcasts it to Polygon Amoy.</p>
+
+<h3>Step 7 — Token appears in the wallet</h3>
+<p>The frontend shows a success screen with the transaction hash (clickable link to view it on the public block explorer, Polygonscan) and the IPFS metadata link. The user's MetaMask wallet now holds one non-transferable "Proof of Personhood" NFT, forever tied to that address.</p>
+
+<!-- 6 -->
+<h2 class="section">6. A tour of every file, in plain English</h2>
+<table>
+<tr><th>File</th><th>What it is</th></tr>
+<tr><td><code>contracts/src/SoulboundToken.sol</code></td><td>The smart contract. Defines the token, who's allowed to mint (only the contract's owner — our backend's wallet), and blocks every transfer after the initial mint.</td></tr>
+<tr><td><code>contracts/scripts/deploy.js</code></td><td>A one-time script: "put the contract onto the Polygon Amoy blockchain and print its address."</td></tr>
+<tr><td><code>contracts/hardhat.config.js</code></td><td>Configuration for Hardhat, the toolkit used to compile, test, and deploy the Solidity contract.</td></tr>
+<tr><td><code>backend/main.py</code></td><td>The whole backend API — three endpoints: health check, get a random challenge, and verify + mint.</td></tr>
+<tr><td><code>backend/requirements.txt</code></td><td>The list of Python libraries the backend depends on.</td></tr>
+<tr><td><code>frontend/src/App.jsx</code></td><td>The top-level page. Tracks which "step" the user is on (connect / verify / processing / done) and shows the right screen.</td></tr>
+<tr><td><code>frontend/src/components/WalletConnect.jsx</code></td><td>The "Connect MetaMask" screen and network-switching logic.</td></tr>
+<tr><td><code>frontend/src/components/ChallengeRecorder.jsx</code></td><td>The biggest, most important file — loads MediaPipe, runs the live camera loop, tracks challenge progress, and submits to the backend.</td></tr>
+<tr><td><code>frontend/src/components/VerificationBadge.jsx</code></td><td>The final "Humanity Verified!" success screen, showing the token, transaction link, and IPFS link.</td></tr>
+<tr><td><code>.env.example</code> files (three of them)</td><td>Templates showing which secret keys each part of the app needs, without containing any real secrets.</td></tr>
+</table>
+
+<!-- 7 -->
+<h2 class="section">7. Why we built it this way (design decisions)</h2>
+<h3>Why split into three separate pieces instead of one program?</h3>
+<p>Separation of trust. The blockchain enforces the one unbreakable rule ("this token can never move") completely independently of our own servers — even if our backend disappears tomorrow, already-minted tokens stay soulbound forever, because that rule lives in the contract, not in our code. The backend is kept as the single gatekeeper of <i>minting</i> because someone has to hold the private key that's allowed to call <code>mint</code>, and it's safer for that key to live on a server than inside every user's browser.</p>
+
+<h3>Why on-device face-tracking instead of sending video to a server?</h3>
+<p>Two reasons, and both are strong points to make in your seminar. <b>Privacy</b>: a system whose entire purpose is dignity/anti-surveillance shouldn't itself require uploading someone's face video to a server. <b>Cost and speed</b>: running detection at 30+ frames per second in the browser is instant and free; sending video to a cloud AI model for every user would be slow and expensive to run at scale.</p>
+
+<h3>Why check <code>isVerified</code> before minting instead of just trying to mint and catching the error?</h3>
+<p>A blockchain transaction that fails ("reverts") still costs the minter wallet real gas — it's better to check for free first (a "read" call costs nothing) than to pay to fail.</p>
+
+<div class="warnbox">
+<span class="label">Be upfront about this if asked</span>
+Our project README currently describes an earlier design where video would be analyzed by Google's Gemini AI model on the backend, and a Gemini library is still listed as a dependency. During development we switched to the on-device MediaPipe approach described above for the privacy and cost reasons above, and the README text is left over from the earlier design. If a professor spots this, the honest answer is: "we iterated — we started with server-side AI video analysis and moved to on-device detection for privacy and performance, and we know the README needs updating to match." That is a completely normal and defensible engineering story.
+</div>
+
+<!-- 8 -->
+<h2 class="section">8. What it can't do yet — and why saying so is a good thing</h2>
+<p>Professors specifically probe for whether you understand your own system's limits — a team that only lists strengths looks like it doesn't understand its own project. Know these cold:</p>
+<ul>
+<li><b>It can be fooled by a very good deepfake or a screen replay of a video.</b> Blendshape-threshold detection proves "a face performed this expression," not "this is definitely not a screen." Stronger anti-spoofing would need texture/depth analysis or the original server-side video-review approach.</li>
+<li><b>Trust is still centralized at the minter wallet.</b> Whoever holds the backend's private key can mint a token to any address, with or without a real verification — the blockchain guarantees the token can't be re-sold, but it doesn't independently guarantee the mint itself was honest. A more advanced design would have the backend produce a cryptographically signed proof that the contract itself checks, rather than just trusting whoever calls the function.</li>
+<li><b>No rate-limiting.</b> Nothing currently stops someone from spamming the challenge/verify endpoints.</li>
+<li><b>No automated tests yet</b> for the smart contract or backend — a professional version of this project would include tests proving, for example, that a transfer attempt always reverts.</li>
+</ul>
+
+<!-- 9 -->
+<h2 class="section">9. Ideas for "future work" (professors always ask)</h2>
+<ol>
+<li><b>Signed attestations:</b> have the backend cryptographically sign proof of verification, and have the smart contract itself verify that signature before minting — removing "just trust the backend" as the security model.</li>
+<li><b>Stronger anti-spoofing:</b> combine on-device liveness with an occasional server-side video check, or add depth/texture-based deepfake detection.</li>
+<li><b>Move to Ethereum mainnet or a production-grade Layer 2</b> once audited, instead of a free testnet.</li>
+<li><b>Rate limiting and abuse protection</b> on the backend API.</li>
+<li><b>Automated test suite</b> for the contract (e.g., using Hardhat) proving the soulbound guarantee and one-per-wallet rule can never be broken.</li>
+<li><b>A real-world use case demo:</b> e.g., plug the "isVerified" check into a mock voting app or a mock airdrop claim page, to show the token actually being used for something.</li>
+</ol>
+
+<!-- 10 -->
+<div class="pagebreak"></div>
+<h2 class="section">10. Anticipated questions and how to answer them</h2>
+
+<div class="qbox"><div class="q">Q: What stops someone from just showing a photo to the camera?</div>
+<div class="a">A: The backend issues a random, unpredictable challenge — like "blink twice" — that a static photo physically cannot perform. The face-tracking model verifies that specific motion happened live, in real time, on the actual video feed.</div></div>
+
+<div class="qbox"><div class="q">Q: Where is my face data stored?</div>
+<div class="a">A: Nowhere. Face-tracking runs entirely inside the browser on the user's own device. Only the final pass/fail result and the wallet address are ever sent to our server — never the video or any image.</div></div>
+
+<div class="qbox"><div class="q">Q: What actually stops the token from being transferred?</div>
+<div class="a">A: The smart contract's transfer function is overridden so that any transfer where the token already has an owner is rejected by the blockchain itself — it's not a UI restriction, it's enforced at the protocol level and can't be bypassed even by us.</div></div>
+
+<div class="qbox"><div class="q">Q: Why Polygon and not Ethereum mainnet?</div>
+<div class="a">A: Polygon Amoy is a free public testnet with the same rules as a production blockchain, letting us build and demo without spending real money on gas fees. A production version would move to a live network after security auditing.</div></div>
+
+<div class="qbox"><div class="q">Q: Isn't this centralized, since your backend controls minting?</div>
+<div class="a">A: Partially, yes — that's an honest limitation we've identified (see Section 8). Right now the backend is a trusted gatekeeper; a stronger version would use a cryptographically signed attestation that the contract verifies itself, removing the need to trust the backend at all.</div></div>
+
+<div class="qbox"><div class="q">Q: What happens if I try to make a second wallet and verify again?</div>
+<div class="a">A: Nothing stops a person from owning multiple wallets and getting one token per wallet today — this system proves "this wallet passed a liveness check," not "this human has never done this before across all their wallets," which is a much harder problem every proof-of-personhood project in the world is still working on.</div></div>
+
+<div class="qbox"><div class="q">Q: What is gas, and who pays it?</div>
+<div class="a">A: Gas is the small fee paid to the blockchain network for processing a transaction. Our backend's minter wallet pays it (in test MATIC from a free faucet) every time a token is minted — the user never pays anything.</div></div>
+
+<div class="qbox"><div class="q">Q: Why not store the video or photo on the blockchain as proof?</div>
+<div class="a">A: Storing any real data on-chain is extremely expensive, and permanently. We instead store a lightweight text pointer to metadata kept on IPFS, and no video is stored anywhere at all.</div></div>
+
+<!-- 11 -->
+<h2 class="section">11. Glossary — every term in this document, one line each</h2>
+<table>
+<tr><th>Term</th><th>Meaning</th></tr>
+<tr><td>Blockchain</td><td>A shared, tamper-resistant list of transactions kept in sync by many independent computers.</td></tr>
+<tr><td>Wallet</td><td>A pair of keys (public address + private key) used to own and control blockchain assets.</td></tr>
+<tr><td>Testnet</td><td>A free practice version of a blockchain, using worthless test currency.</td></tr>
+<tr><td>Smart contract</td><td>Code deployed to a blockchain that runs exactly as written and can't be secretly altered.</td></tr>
+<tr><td>Gas</td><td>The fee paid to have a blockchain transaction processed.</td></tr>
+<tr><td>NFT</td><td>A unique, individually-identifiable token (as opposed to interchangeable currency).</td></tr>
+<tr><td>ERC-721</td><td>The standard rulebook that defines how NFTs must behave.</td></tr>
+<tr><td>Soulbound Token (SBT)</td><td>An NFT permanently locked to one wallet — it can never be transferred.</td></tr>
+<tr><td>EIP-5192</td><td>The standard defining how a contract announces it's soulbound.</td></tr>
+<tr><td>Sybil resistance</td><td>Preventing one person from posing as many separate identities.</td></tr>
+<tr><td>Proof of Personhood</td><td>Proving you're a unique real human without revealing a government ID.</td></tr>
+<tr><td>Liveness detection</td><td>Confirming a live human is present, not a photo, video, or deepfake.</td></tr>
+<tr><td>Challenge-response</td><td>Asking for a random, unpredictable action that a fake can't pre-prepare for.</td></tr>
+<tr><td>MediaPipe</td><td>Google's free, open-source toolkit for on-device machine learning models.</td></tr>
+<tr><td>Blendshape</td><td>A 0–1 score representing how strongly one facial muscle/expression is active.</td></tr>
+<tr><td>On-device inference</td><td>Running an AI model directly on the user's own hardware, not a server.</td></tr>
+<tr><td>IPFS</td><td>A decentralized network for storing and fetching files by content fingerprint.</td></tr>
+<tr><td>Pinata</td><td>A service that keeps files reliably available ("pinned") on IPFS.</td></tr>
+<tr><td>FastAPI</td><td>A Python framework used to build our backend's web API.</td></tr>
+<tr><td>Web3.py / ethers.js</td><td>Libraries that let backend/frontend code talk to a blockchain.</td></tr>
+<tr><td>MetaMask</td><td>A popular browser-extension wallet used to connect to blockchain apps.</td></tr>
+<tr><td>Environment variable / .env</td><td>A way to keep secret keys out of source code, loaded only at runtime.</td></tr>
+<tr><td>RPC</td><td>The network protocol used to send requests to a blockchain node.</td></tr>
+</table>
+
+<p class="footer-note">Prepared as a study aid for the seminar defense. Read Sections 1, 5, and 10 the night before — those three carry the most weight in a live Q&amp;A.</p>
+
+</body>
+</html>

@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Decentralized Proof of Personhood — Project Overview</title>
+<style>
+  @page { size: A4; margin: 20mm 18mm; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    color: #1e2233;
+    font-size: 10.6pt;
+    line-height: 1.55;
+    margin: 0;
+  }
+  .cover {
+    height: 257mm;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    page-break-after: always;
+    background: linear-gradient(160deg, #eef0ff 0%, #ffffff 55%);
+    border-radius: 4px;
+  }
+  .cover .tag {
+    letter-spacing: 3px;
+    font-size: 9.5pt;
+    color: #6366f1;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .cover h1 {
+    font-size: 30pt;
+    margin: 0 0 10px;
+    color: #1e1b4b;
+    max-width: 480px;
+    line-height: 1.2;
+  }
+  .cover .sub {
+    font-size: 12.5pt;
+    color: #4b4f6b;
+    max-width: 420px;
+    margin-bottom: 40px;
+  }
+  .cover .badge {
+    display: inline-block;
+    background: #4f46e5;
+    color: #fff;
+    padding: 8px 22px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 11pt;
+    letter-spacing: 1px;
+    margin-bottom: 14px;
+  }
+  .cover .team {
+    font-size: 11pt;
+    color: #33364d;
+  }
+  .cover .meta {
+    margin-top: 36px;
+    font-size: 9.5pt;
+    color: #8a8fb0;
+  }
+
+  h2.section {
+    font-size: 15pt;
+    color: #3730a3;
+    border-bottom: 2px solid #c7d2fe;
+    padding-bottom: 6px;
+    margin: 0 0 12px;
+    page-break-after: avoid;
+  }
+  h2.section .num {
+    display: inline-block;
+    background: #4f46e5;
+    color: #fff;
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    text-align: center;
+    line-height: 22px;
+    font-size: 11pt;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+  section { margin-bottom: 22px; }
+  section.pagebreak { page-break-before: always; }
+
+  p { margin: 0 0 10px; }
+  ul, ol { margin: 0 0 10px; padding-left: 20px; }
+  li { margin-bottom: 5px; }
+  strong { color: #312e81; }
+
+  .lede {
+    font-size: 11.5pt;
+    color: #33364d;
+    background: #f5f6ff;
+    border-left: 3px solid #6366f1;
+    padding: 10px 14px;
+    border-radius: 0 6px 6px 0;
+    margin-bottom: 16px;
+  }
+
+  .flow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 12px 0 6px;
+  }
+  .flow .step {
+    flex: 1 1 140px;
+    background: #f8f9ff;
+    border: 1px solid #dfe2f7;
+    border-radius: 8px;
+    padding: 10px 10px 9px;
+    font-size: 9pt;
+    position: relative;
+  }
+  .flow .step .n {
+    display: inline-block;
+    background: #4f46e5;
+    color: #fff;
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    text-align: center;
+    line-height: 16px;
+    font-size: 8pt;
+    margin-bottom: 5px;
+  }
+
+  table.stack {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9.5pt;
+    margin-top: 6px;
+  }
+  table.stack th {
+    text-align: left;
+    background: #eef0ff;
+    color: #3730a3;
+    padding: 7px 10px;
+    font-size: 8.7pt;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+  }
+  table.stack td {
+    padding: 7px 10px;
+    border-bottom: 1px solid #ececf5;
+    vertical-align: top;
+  }
+  table.stack tr:last-child td { border-bottom: none; }
+
+  .challenge {
+    border: 1px solid #e3e5f5;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    page-break-inside: avoid;
+  }
+  .challenge .h {
+    background: #f5f6ff;
+    padding: 8px 12px;
+    font-weight: 700;
+    color: #1e1b4b;
+    font-size: 10pt;
+    border-bottom: 1px solid #e3e5f5;
+  }
+  .challenge .body { padding: 10px 12px; }
+  .challenge .row { margin-bottom: 6px; }
+  .challenge .row:last-child { margin-bottom: 0; }
+  .challenge .label {
+    display: inline-block;
+    font-size: 8pt;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 1px 7px;
+    border-radius: 4px;
+    margin-right: 6px;
+  }
+  .challenge .label.problem { background: #fee2e2; color: #991b1b; }
+  .challenge .label.fix { background: #dcfce7; color: #166534; }
+  code {
+    background: #f1f1fb;
+    color: #4338ca;
+    padding: 1px 5px;
+    border-radius: 4px;
+    font-size: 9pt;
+  }
+
+  .status-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .status-grid .item {
+    flex: 1 1 45%;
+    background: #f8f9ff;
+    border: 1px solid #dfe2f7;
+    border-radius: 8px;
+    padding: 9px 12px;
+    font-size: 9.5pt;
+  }
+  .status-grid .item .dot {
+    display: inline-block;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    margin-right: 6px;
+  }
+  .dot.done { background: #22c55e; }
+  .dot.partial { background: #eab308; }
+
+  footer.pagefoot {
+    margin-top: 30px;
+    padding-top: 10px;
+    border-top: 1px solid #e3e5f5;
+    font-size: 8pt;
+    color: #9497b5;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="tag">VTU B.E. Project · SKIT · 2025–26</div>
+  <div class="badge">TEAM 14</div>
+  <h1>Decentralized Proof of Personhood</h1>
+  <div class="sub">On-device AI liveness detection + a non-transferable blockchain credential, proving "one wallet, one human" without a central identity authority.</div>
+  <div class="team">Revanth &nbsp;•&nbsp; Shashank &nbsp;•&nbsp; Ajay &nbsp;•&nbsp; Chinmayee</div>
+  <div class="meta">Project overview prepared for guide review</div>
+</div>
+
+<section>
+  <h2 class="section"><span class="num">1</span>Why We're Building This</h2>
+  <div class="lede">Sybil attacks — one person creating thousands of fake accounts or wallets — quietly break every system that assumes "one identity, one vote/entry/airdrop."</div>
+  <p>Bots and fake accounts are able to farm airdrops, dominate voting in DAOs, and drown out real users on social platforms, because there is no cheap, reliable way for a system to check "is this a unique real human?" without either:</p>
+  <ul>
+    <li><strong>Trusting a CAPTCHA</strong> — increasingly defeated by automated solvers and bot farms.</li>
+    <li><strong>Requiring government ID / KYC</strong> — effective, but hands a centralized company or authority a permanent, trackable record of who you are, and excludes anyone without formal documentation.</li>
+  </ul>
+  <p>Decentralized applications in particular — DAOs, quadratic voting, fair token distributions, community grants — need a <strong>privacy-respecting</strong> way to say "one human, one slot" that doesn't route through a central gatekeeper who can track, censor, or leak that data.</p>
+</section>
+
+<section>
+  <h2 class="section"><span class="num">2</span>What We're Building</h2>
+  <p>A decentralized Proof-of-Personhood system where a user proves they are a unique, live human being — using nothing but their webcam and a crypto wallet — and receives a <strong>Soulbound Token (SBT)</strong>: a non-transferable, on-chain credential that says "this wallet belongs to a verified human," without ever storing a name, ID document, or biometric template anywhere.</p>
+  <ul>
+    <li><strong>No ID documents.</strong> Verification is behavioral (liveness), not identity-based.</li>
+    <li><strong>No centralized database.</strong> The only persistent record is a token on a public blockchain.</li>
+    <li><strong>Non-transferable by design.</strong> The credential cannot be sold, gifted, or moved — it stays bound to the wallet that earned it.</li>
+  </ul>
+</section>
+
+<section>
+  <h2 class="section"><span class="num">3</span>How It Works</h2>
+  <div class="flow">
+    <div class="step"><span class="n">1</span>User connects their MetaMask wallet (Polygon Amoy testnet).</div>
+    <div class="step"><span class="n">2</span>App fetches a random liveness challenge — e.g. <em>"blink twice slowly."</em></div>
+    <div class="step"><span class="n">3</span>On-device face tracking (MediaPipe) confirms the challenge was performed live, via webcam.</div>
+    <div class="step"><span class="n">4</span>On success, verification metadata is pinned to IPFS.</div>
+    <div class="step"><span class="n">5</span>A Soulbound Token (EIP-5192) is minted directly to the user's wallet.</div>
+    <div class="step"><span class="n">6</span>Token is permanently locked to that wallet — one credential per human.</div>
+  </div>
+</section>
+
+<section class="pagebreak">
+  <h2 class="section"><span class="num">4</span>Architecture &amp; Tech Stack</h2>
+  <table class="stack">
+    <tr><th>Layer</th><th>Technology</th><th>Role</th></tr>
+    <tr>
+      <td><strong>Smart Contract</strong></td>
+      <td>Solidity, Hardhat, OpenZeppelin (ERC-721), EIP-5192</td>
+      <td>Mints and permanently locks the Soulbound Token; enforces one-per-wallet on-chain.</td>
+    </tr>
+    <tr>
+      <td><strong>Backend</strong></td>
+      <td>Python, FastAPI, Web3.py, Pinata (IPFS)</td>
+      <td>Issues challenges, pins verification metadata to IPFS, signs and submits the mint transaction.</td>
+    </tr>
+    <tr>
+      <td><strong>Frontend</strong></td>
+      <td>React, Vite, Tailwind CSS, ethers.js, MediaPipe Tasks Vision</td>
+      <td>Wallet connection, webcam capture, real-time on-device face-landmark liveness detection.</td>
+    </tr>
+    <tr>
+      <td><strong>Network</strong></td>
+      <td>Polygon Amoy Testnet</td>
+      <td>Low-cost, public chain to host the verification credential.</td>
+    </tr>
+  </table>
+</section>
+
+<section>
+  <h2 class="section"><span class="num">5</span>Real Engineering Challenges &amp; How We Solved Them</h2>
+  <p style="font-size:9.5pt; color:#6b6f8f; margin-top:-4px;">These are concrete design problems we hit while building the system — not hypothetical risks — and the fixes actually implemented in the current codebase.</p>
+
+  <div class="challenge">
+    <div class="h">Liveness detection was slow, costly, and opaque with a cloud AI model</div>
+    <div class="body">
+      <div class="row"><span class="label problem">Problem</span>Our original design sent a recorded video clip to a cloud LLM (Gemini) for every single verification. That meant per-user upload latency, a running API cost for every verification, and — worst of all — an opaque "yes/no" judgment call from a model we couldn't fully audit for a security-relevant decision.</div>
+      <div class="row"><span class="label fix">Fix</span>We moved liveness detection entirely on-device using <code>MediaPipe FaceLandmarker</code> running in-browser (WASM/GPU). It tracks real-time face blendshapes (eye blink, smile, jaw, eyebrows) and head-pose angles, driving a deterministic state machine per challenge type. Result: verification is instant, free per-user, fully private (no video ever leaves the device), and auditable — the pass/fail logic is code we can read, not a model prompt.</div>
+    </div>
+  </div>
+
+  <div class="challenge">
+    <div class="h">Stopping one wallet from minting multiple credentials</div>
+    <div class="body">
+      <div class="row"><span class="label problem">Problem</span>Nothing stopped a user from calling verify twice and getting two Soulbound Tokens minted to the same wallet — breaking the entire "one human, one credential" premise, and wasting gas.</div>
+      <div class="row"><span class="label fix">Fix</span>Enforced at two layers: the backend checks the contract's <code>isVerified</code> mapping before doing any work, and — critically — the contract itself rejects a second mint with <code>require(!isVerified[to])</code>. Even if the backend check is bypassed or raced, the chain is the final source of truth.</div>
+    </div>
+  </div>
+
+  <div class="challenge">
+    <div class="h">A standard NFT can be sold — that defeats the whole point</div>
+    <div class="body">
+      <div class="row"><span class="label problem">Problem</span>An ordinary ERC-721 token can be transferred after mint. If a verified human could sell their "proof of personhood" to someone else, the credential would stop meaning anything.</div>
+      <div class="row"><span class="label fix">Fix</span>We override OpenZeppelin's internal transfer hook so any transfer is rejected unless it's the initial mint (<code>from == address(0)</code>), and implement the EIP-5192 <code>locked()</code> standard so wallets and explorers correctly display it as a non-transferable "soulbound" token rather than a broken one.</div>
+    </div>
+  </div>
+
+  <div class="challenge">
+    <div class="h">Browser blocked frontend → backend requests during local development</div>
+    <div class="body">
+      <div class="row"><span class="label problem">Problem</span>The React dev server (port 5173) and the FastAPI backend (port 8000) are different origins, so the browser's default same-origin policy silently blocked every API call during early testing.</div>
+      <div class="row"><span class="label fix">Fix</span>Added explicit CORS middleware in FastAPI, allow-listing only our known local dev ports rather than opening it to every origin.</div>
+    </div>
+  </div>
+
+  <div class="challenge">
+    <div class="h">Teammates without funded wallets or API keys couldn't run the app</div>
+    <div class="body">
+      <div class="row"><span class="label problem">Problem</span>Testing the full flow required a live Pinata account and a gas-funded Polygon Amoy wallet with a deployed contract. Any teammate missing those — or hitting an empty testnet faucet — was blocked from working on anything else.</div>
+      <div class="row"><span class="label fix">Fix</span>The backend degrades gracefully: it returns a mock IPFS URI when Pinata keys aren't set, and skips the on-chain mint step entirely when the contract address or minter key are missing or still placeholder values — so the liveness/UI flow can be built and tested independently of blockchain access.</div>
+    </div>
+  </div>
+
+  <div class="challenge">
+    <div class="h">Hardhat's Node.js compatibility warning</div>
+    <div class="body">
+      <div class="row"><span class="label problem">Problem</span>Our dev environment runs Node.js v18.16.1, which Hardhat flags as unsupported — it can cause unpredictable compiler/plugin behavior that's hard to reproduce.</div>
+      <div class="row"><span class="label fix">Fix</span>Currently tracked as an open item — we compile and test successfully today, but plan to upgrade to a Hardhat-supported Node LTS release before final deployment to rule out subtle version-related issues.</div>
+    </div>
+  </div>
+</section>
+
+<section class="pagebreak">
+  <h2 class="section"><span class="num">6</span>Current Status</h2>
+  <div class="status-grid">
+    <div class="item"><span class="dot done"></span><strong>Smart contract</strong> — written, compiles cleanly, deploy script ready for Polygon Amoy.</div>
+    <div class="item"><span class="dot done"></span><strong>Frontend</strong> — builds and runs; wallet connect, webcam capture, and live challenge UI complete.</div>
+    <div class="item"><span class="dot done"></span><strong>Liveness detection</strong> — on-device MediaPipe pipeline working for 7 challenge types.</div>
+    <div class="item"><span class="dot done"></span><strong>Backend</strong> — FastAPI service serving challenges, IPFS pinning, and mint logic complete.</div>
+    <div class="item"><span class="dot partial"></span><strong>End-to-end on testnet</strong> — pending funded wallet + live Pinata keys for full demo run.</div>
+    <div class="item"><span class="dot partial"></span><strong>Node/Hardhat version</strong> — works today; LTS upgrade planned before final submission.</div>
+  </div>
+</section>
+
+<section>
+  <h2 class="section"><span class="num">7</span>Team 14</h2>
+  <p>Revanth &nbsp;•&nbsp; Shashank &nbsp;•&nbsp; Ajay &nbsp;•&nbsp; Chinmayee</p>
+  <p style="color:#8a8fb0; font-size:9pt;">VTU B.E. Final Year Project — SKIT, 2025–26</p>
+</section>
+
+</body>
+</html>
